@@ -7,31 +7,11 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuItem,
 } from '../ui/sidebar';
-import styled from '@emotion/styled';
 import { Card } from '../ui/card';
 import { motion, AnimatePresence } from 'framer-motion';
+import { StyledSidebarMenu, StyledSidebarMenuItem, LogoutButton } from './Styled-Components/MainPage-styles';
 
-const StyledSidebarMenu = styled(SidebarMenu)`
-  display: flex;
-  flex-direction: column;
-  gap: 24px; /* Add 24px gap between items */
-  margin-top: 50px;
-`;
-
-const StyledSidebarMenuItem = styled(SidebarMenuItem)`
-  font-size: 2rem;
-  font-weight: 800;
-
-  a {
-    transition: color 0.5s ease;
-    &:hover {
-      color: #e5989b;
-    }
-  }
-`;
 
 interface Location {
   streetAddress: string;
@@ -147,7 +127,7 @@ const MatchedView = ({
         animate={{ opacity: 1, y: 0 }}
         className="text-2xl font-bold text-red-500 mt-8"
       >
-        You have found your woofing match! ��
+        You have found your woofing match! 
       </motion.p>
       
       <button 
@@ -266,6 +246,11 @@ export function AppSidebar() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
   return (
     <>
       <Sidebar>
@@ -325,6 +310,9 @@ export function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+        <LogoutButton onClick={handleLogout}>
+          Logout
+        </LogoutButton>
       </Sidebar>
 
       <AnimatePresence>

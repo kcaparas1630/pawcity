@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import Layout from './layout';
-import Container from './Styled-Components/MainPage-styles';
+import { Container } from './Styled-Components/MainPage-styles';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../ui/card';
 import { motion, PanInfo, useAnimation } from 'framer-motion';
